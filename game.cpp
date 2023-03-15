@@ -1,9 +1,10 @@
 #include <iostream>
-#include "space.h"
+#include "board.h"
+
 
 using namespace std;
-
-void draw_line(){
+/*
+void drawLine(){
 	cout << "-|-";
         for(int n = 0; n < 8; n++){
 		cout<< "--|-";
@@ -11,7 +12,7 @@ void draw_line(){
 	cout << endl;
 }
 
-string get_letter(int position){
+string getLetter(int position){
 	switch (position){
 		case 0:
 			return "a";
@@ -34,42 +35,24 @@ string get_letter(int position){
 	}
 }
 
-char get_piece_symbol(Piece piece){
-	switch (piece.value) {
-		case 1:
-			return 'P';
-		case 2:
-			return 'R';
-		case 3:
-			return 'N';
-		case 4:
-			return 'B';
-		case 5:
-			return 'Q';
-		case 6:
-			return 'K';
-		default:
-			return ' ';
-	}
-}
-
-void display_board(Space board[][8]){
-	draw_line();
+void displayBoard(Space board[][8]){
+	drawLine();
 	for(int i = 0; i < 8; i++){
 		for(int j = 0; j < 8; j++){
 			Piece piece;
-			piece = board[i][j].getPiece(board[i][j]);
-			cout << " | " << get_piece_symbol(piece);
+			piece = board[i][j].getPiece();
+			cout << " | " << piece.getPieceSymbol();//getPieceSymbol(piece);
 		}
 		cout << " | " << endl;
-		draw_line();
+		drawLine();
 	}
 }
 
 
-
+*/
 int main() {
 	// Initialize board
+	/*
 	Space board[8][8] = {};
 
 	for (int i = 0; i < 8; i++){
@@ -77,7 +60,7 @@ int main() {
 		for (int j = 0; j < 8; j++){
 			Space newSpace;
 			newSpace.piece = {};
-			string id = get_letter(i) + to_string(num);
+			string id = getLetter(i) + to_string(num);
 			newSpace.id = id;
 			newSpace.hasPiece = false;
 			board[i][j] = newSpace;
@@ -85,12 +68,17 @@ int main() {
 		}
 	}
 
-	display_board(board);
+	displayBoard(board);
+	*/
 
+	Board b = {};
+	b.initialize();
+	b.displayBoard();
 
 	Piece whitePieces[6] = {};
 	Piece blackPieces[6] = {};
 
+	/*
 	// Create each white piece
 	for(int i = 0; i < 6; i++) {
 		Piece newPiece;
@@ -159,10 +147,7 @@ int main() {
 		board[6][i].hasPiece = true;
         }
 
-	display_board(board);
-
-	cout << board[0][0].hasPiece << endl;
-	cout << board[3][3].hasPiece << endl;
-
+	displayBoard(board);
+	*/
 	return 0;
 }

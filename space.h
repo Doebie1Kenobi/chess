@@ -10,11 +10,9 @@ class Space {
 		std::string id;
 		bool hasPiece;
 
-		Piece getPiece(Space space);
+		Piece getPiece(){
+			return piece;
+		}
 };
 
-
-Piece Space::getPiece(Space space) {
-	return space.piece;
-}
 #endif
