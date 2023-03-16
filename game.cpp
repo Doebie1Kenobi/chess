@@ -78,7 +78,7 @@ int main() {
 	Piece whitePieces[6] = {};
 	Piece blackPieces[6] = {};
 
-	/*
+	
 	// Create each white piece
 	for(int i = 0; i < 6; i++) {
 		Piece newPiece;
@@ -96,6 +96,7 @@ int main() {
 		blackPieces[i] = newPiece;
 	}
 
+	/*
 	// Add black pieces 
 	for(int i = 0; i < 8; i++){
 		if((i == 0) || (i==7)){
@@ -135,7 +136,13 @@ int main() {
 			board[7][i].hasPiece = true;
                 }
         }
+	*/
 
+	b.addPiecesToBoard(blackPieces);
+	b.addPiecesToBoard(whitePieces);
+	b.addPawns(blackPieces[0]);
+	b.addPawns(whitePieces[0]);	
+	/*
 	//Add Pawns
 	for(int i = 0; i < 8; i++){
 		board[1][i].piece = blackPieces[0];
@@ -146,8 +153,10 @@ int main() {
                 board[6][i].piece = whitePieces[0];
 		board[6][i].hasPiece = true;
         }
-
-	displayBoard(board);
 	*/
+
+	b.displayBoard();
+	//displayBoard(board);
+	
 	return 0;
 }

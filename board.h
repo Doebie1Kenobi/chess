@@ -7,6 +7,7 @@
 class Board {
         public:
                 Space board[8][8] = {};
+		Piece whiteArr[6] = {};
 
 		void initialize(){
 			for(int i = 0; i < 8; i++){
@@ -43,6 +44,44 @@ class Board {
 				std::cout<< "--|-";
         		}
 			std::cout << std::endl;
+		}
+
+		void addPiecesToBoard(Piece arr[6]){
+			int num = 0;
+			if(arr[0].color == "White"){
+				num = 7;
+			}
+
+			for(int i = 0; i < 8; i++){
+				if((i == 0) || (i==7)){
+                        		board[num][i].piece = arr[1];
+                        		board[num][i].hasPiece = true;
+                		}else if((i==1) || (i==6)){
+                        		board[num][i].piece = arr[2];
+                        		board[num][i].hasPiece = true;
+                		}else if((i==2) || (i==5)){
+                        		board[num][i].piece = arr[3];
+                        		board[num][i].hasPiece = true;
+                		}else if(i == 3){
+                        		board[num][i].piece = arr[4];
+                        		board[num][i].hasPiece = true;
+                		}else{
+                        		board[num][i].piece = arr[5];
+                        		board[num][i].hasPiece = true;
+                		}
+
+			}
+		}
+
+		void addPawns(Piece pawn){
+			int num = 1;
+			if(pawn.color == "White"){
+				num = 6;
+			}
+			for(int i = 0; i < 8; i++){
+				board[num][i].piece = pawn;
+				board[num][i].hasPiece = true;
+			}
 		}
 
 		std::string getLetter(int pos){
