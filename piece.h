@@ -1,11 +1,14 @@
 #ifndef PIECE_H
 #define PIECE_H
 
+#include "move.h"
+
 class Piece {
 	public:
 		int value;
 		std::string color;
 		bool active;
+		Move moveSet[10] = {};
 
 		char getPieceSymbol(){
 			switch (value) {

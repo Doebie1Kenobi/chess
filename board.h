@@ -27,6 +27,7 @@ class Board {
 		void displayBoard(){
 			drawLine();
         		for(int i = 0; i < 8; i++){
+				std::cout << " " << getLetter(i);
                 		for(int j = 0; j < 8; j++){
                         		Piece piece;
                         		piece = board[i][j].getPiece();
@@ -39,7 +40,7 @@ class Board {
 		}
 
 		void drawLine(){
-			std::cout << "-|-";
+			std::cout << "---|-";
         		for(int n = 0; n < 8; n++){
 				std::cout<< "--|-";
         		}
