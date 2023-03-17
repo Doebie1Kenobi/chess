@@ -106,6 +106,78 @@ class Board {
                         		return "";
         		}
 		}
+
+		/*
+		Piece getPieceFromSpace(std::string space){
+			for(int i = 0; i < 8; i++){
+				for(int j = 0; j < 8; j++){
+					if(space == board[i][j].id){
+						return board[i][j].getPiece();
+					}
+				}
+			}
+			std::cout << "No piece found!" << std::endl;
+			Piece empty = {};	
+			return empty;
+		}
+		*/
+
+		int getRow(std::string space){
+			for(int i = 0; i < 8; i++){
+				for(int j = 0; j < 8; j++){
+					if(space == board[i][j].id){
+						return i;
+					}
+				}
+			}
+			return -1;
+		}
+
+		int getColumn(std::string space){
+                        for(int i = 0; i < 8; i++){
+                                for(int j = 0; j < 8; j++){
+                                        if(space == board[i][j].id){
+                                                return j;
+                                        }
+                                }
+                        }
+			return -1;
+                }
+
+		bool isValid(std::string space){
+			for(int i = 0; i < 8; i++){
+				for(int j = 0; j < 8; j++){
+					if(space == board[i][j].id){
+					       return true;
+					}	       
+				}
+			}
+
+			return false;
+		}
+
+		void move(std::string space_one, std::string space_two){
+			if(isValid(space_one) && isValid(space_two)){
+				int currRow = getRow(space_one);
+				int currCol = getColumn(space_one);
+				int nextRow = getRow(space_two);
+				int nextCol = getColumn(space_two);
+
+				Space nextSpace;
+				nextSpace.piece = board[currRow][currCol].piece;
+				nextSpace.id = board[nextRow][nextCol].id;
+				nextSpace.hasPiece = true;
+				board[nextRow][nextCol] = nextSpace;
+
+				Space currSpace;
+				currSpace.piece = {};
+				currSpace.id = board[currRow][currCol].id;
+				currSpace.hasPiece = false;
+				board[currRow][currCol] = currSpace;
+			}else{
+				std::cout << "Enter valid spaces!" << std::endl;
+			}
+		}
 };
 
 #endif
