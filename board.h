@@ -5,8 +5,8 @@
 
 
 class Board {
-        public:
-                Space board[8][8] = {};
+    public:
+        Space board[8][8] = {};
 		Piece whiteArr[6] = {};
 
 		void initialize(){
@@ -27,20 +27,29 @@ class Board {
 		void displayBoard(){
 			drawLine();
         		for(int i = 0; i < 8; i++){
-				std::cout << " " << getLetter(i);
-                		for(int j = 0; j < 8; j++){
-                        		Piece piece;
-                        		piece = board[i][j].getPiece();
-					std::cout << " | " << piece.getPieceSymbol();
-                		}
-				std::cout << " | " << std::endl;
-                		drawLine();
+					std::cout << " " << getLetter(i);
+                	for(int j = 0; j < 8; j++){
+                        Piece piece;
+                        piece = board[i][j].getPiece();
+						std::cout << " | " << piece.getPieceSymbol();
+                	}
+					std::cout << " | " << std::endl;
+                	drawLine();
         		}
+			drawLineWithNumbers();
+		}
 
+		void drawLineWithNumbers(){
+			std::cout << "   ";
+			for(int n = 0; n < 8; n++){
+				std::cout << "| " << getRowNumber(n) << " ";
+			}
+			std::cout << "| " << std::endl;
 		}
 
 		void drawLine(){
-			std::cout << "---|-";
+			//std::cout << "---|-";
+			std::cout << "  -|-";
         		for(int n = 0; n < 8; n++){
 				std::cout<< "--|-";
         		}
@@ -55,21 +64,21 @@ class Board {
 
 			for(int i = 0; i < 8; i++){
 				if((i == 0) || (i==7)){
-                        		board[num][i].piece = arr[1];
+                    board[num][i].piece = arr[1];
+                    board[num][i].hasPiece = true;
+                }else if((i==1) || (i==6)){
+                    board[num][i].piece = arr[2];
+                    board[num][i].hasPiece = true;
+                }else if((i==2) || (i==5)){
+                    board[num][i].piece = arr[3];
+                    board[num][i].hasPiece = true;
+                }else if(i == 3){
+                    board[num][i].piece = arr[4];
                         		board[num][i].hasPiece = true;
-                		}else if((i==1) || (i==6)){
-                        		board[num][i].piece = arr[2];
-                        		board[num][i].hasPiece = true;
-                		}else if((i==2) || (i==5)){
-                        		board[num][i].piece = arr[3];
-                        		board[num][i].hasPiece = true;
-                		}else if(i == 3){
-                        		board[num][i].piece = arr[4];
-                        		board[num][i].hasPiece = true;
-                		}else{
-                        		board[num][i].piece = arr[5];
-                        		board[num][i].hasPiece = true;
-                		}
+                }else{
+                    board[num][i].piece = arr[5];
+                    board[num][i].hasPiece = true;
+                }
 
 			}
 		}
@@ -78,6 +87,11 @@ class Board {
 			int num = 1;
 			if(pawn.color == "White"){
 				num = 6;
+				for(int i = 0; i < 8; i++){
+					setPawnMoveset(pawn);
+					board[num][i].piece = pawn;
+					board[num][i].hasPiece = true;
+				}
 			}
 			for(int i = 0; i < 8; i++){
 				board[num][i].piece = pawn;
@@ -85,27 +99,70 @@ class Board {
 			}
 		}
 
+		void setPawnMoveset(Piece piece){
+			// Move 1
+			Move move_one;
+			move_one.setMove(1,0,0,0,0,0);
+			piece.moveset[0] = move_one;
+			// Move 2
+			Move move_two;
+			move_two.setMove(2,0,0,0,0,0);
+			piece.moveset[1] = move_two;
+			// Move 3
+			Move attack_one;
+			attack_one.setMove(0,0,1,0,0,0);
+			piece.moveset[2] = attack_one;
+			// Move 4
+			Move attack_two;
+			attack_two.setMove(0,0,0,1,0,0);
+			piece.moveset[3] = attack_two;
+
+		}
+
 		std::string getLetter(int pos){
 			switch (pos){
-                		case 0:
-                        		return "a";
-                		case 1:
-                        		return "b";
-                		case 2:
-                        		return "c";
-                		case 3:
-                        		return "d";
-                		case 4:
-                        		return "e";
-                		case 5:
-                        		return "f";
-                		case 6:
-                        		return "g";
-                		case 7:
-                        		return "h";
-                		default:
-                        		return "";
-        		}
+                case 0:
+                    return "a";
+                case 1:
+                    return "b";
+                case 2:
+                    return "c";
+                case 3:
+                    return "d";
+                case 4:
+                    return "e";
+                case 5:
+                    return "f";
+                case 6:
+                    return "g";
+                case 7:
+                    return "h";
+                default:
+                    return "";
+        	}
+		}
+
+		int getRowNumber(int pos){
+			switch (pos){
+                case 0:
+                    return 8;
+                case 1:
+                    return 7;
+                case 2:
+                    return 6;
+                case 3:
+                    return 5;
+                case 4:
+                    return 4;
+                case 5:
+                    return 3;
+                case 6:
+                    return 2;
+                case 7:
+                    return 1;
+                default:
+                    return 0;
+        	}
 		}
 
 		/*
@@ -135,15 +192,15 @@ class Board {
 		}
 
 		int getColumn(std::string space){
-                        for(int i = 0; i < 8; i++){
-                                for(int j = 0; j < 8; j++){
-                                        if(space == board[i][j].id){
-                                                return j;
-                                        }
-                                }
-                        }
-			return -1;
+            for(int i = 0; i < 8; i++){
+                for(int j = 0; j < 8; j++){
+                    if(space == board[i][j].id){
+                        return j;
+                    }
                 }
+            }
+			return -1;
+        }
 
 		bool isValid(std::string space){
 			for(int i = 0; i < 8; i++){

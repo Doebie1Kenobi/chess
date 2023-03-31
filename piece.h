@@ -8,7 +8,7 @@ class Piece {
 		int value;
 		std::string color;
 		bool active;
-		Move moveSet[10] = {};
+		Move moveset[10] = {};
 
 		char getPieceSymbol(){
 			switch (value) {

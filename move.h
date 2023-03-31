@@ -2,23 +2,24 @@
 #define MOVE_H
 
 class Move {
-	int vertical;
-	int horizontal;
-	int rDiagonalUp;
-	int lDiagonalUp;
-	int rDiagonalDown;
-	int lDiagonalDown;
+	public:
+		int vertical = 0;
+		int horizontal = 0;
+		int rDiagonalUp = 0;
+		int lDiagonalUp = 0;
+		int rDiagonalDown = 0;
+		int lDiagonalDown = 0;	
 
-	/*
-	Move(int v, int h, int rdu, int ldu, int rdd, int ldd){
-		vertical = v;
-		horizontal = h;
-		rDiagonalUp = rdu;
-		lDiagonalUp = ldu;
-		rDiagonalDown = rdd;
-		lDiagonalDown = ldd;
-	}
-	*/
+		void setMove(int v, int h, int rdu, int ldu, int rdd, int ldd){
+			vertical = v;
+			horizontal = h;
+			rDiagonalUp = rdu;
+			lDiagonalUp = ldu;
+			rDiagonalDown = rdd;
+			lDiagonalDown = ldd;
+		}
+	
+	
 	
 };
 
