@@ -5,16 +5,12 @@
 using namespace std;
 
 int main() {
-	// Initialize board
+	// Create new board and initialize it
 	Board b = {};
 	b.initialize();
-	b.displayBoard();
-
-	Piece whitePieces[6] = {};
-	Piece blackPieces[6] = {};
-
 	
-	// Create each white piece
+	// Create and add each white piece
+	Piece whitePieces[6] = {};
 	for(int i = 0; i < 6; i++) {
 		Piece newPiece;
 		newPiece.value = i + 1;
@@ -22,7 +18,11 @@ int main() {
 		newPiece.active = true;
 		whitePieces[i] = newPiece;
 	}
+	b.addPawns(whitePieces[0]);
+	b.addPiecesToBoard(whitePieces);
 
+	// Create each black piece
+	Piece blackPieces[6] = {};
 	for(int i = 0; i < 6; i++){
 		Piece newPiece;
 		newPiece.value = i + 1;
@@ -30,23 +30,18 @@ int main() {
 		newPiece.active = true;
 		blackPieces[i] = newPiece;
 	}
-
-	b.addPiecesToBoard(blackPieces);
-	b.addPiecesToBoard(whitePieces);
 	b.addPawns(blackPieces[0]);
-	b.addPawns(whitePieces[0]);
-
-	b.displayBoard();
+	b.addPiecesToBoard(blackPieces);
 
 	string piece = "";
 	string space = "";
 	while(true){
+		b.displayBoard();
 		cout << "Enter the piece you want to move: "; 
 		cin >> piece;
 		cout << "Enter the space you want to move it to: "; 
 		cin >> space;
-		b.move(piece, space);
-		b.displayBoard();	
+		b.move(piece, space);	
 	}
 
 	return 0;

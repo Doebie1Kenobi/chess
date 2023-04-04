@@ -7,7 +7,6 @@
 class Board {
     public:
         Space board[8][8] = {};
-		Piece whiteArr[6] = {};
 
 		void initialize(){
 			for(int i = 0; i < 8; i++){
@@ -88,34 +87,54 @@ class Board {
 			if(pawn.color == "White"){
 				num = 6;
 				for(int i = 0; i < 8; i++){
-					setPawnMoveset(pawn);
+					setWhitePawnMoveset(pawn);
 					board[num][i].piece = pawn;
 					board[num][i].hasPiece = true;
 				}
 			}
 			for(int i = 0; i < 8; i++){
+				setBlackPawnMoveset(pawn);
 				board[num][i].piece = pawn;
 				board[num][i].hasPiece = true;
 			}
 		}
 
-		void setPawnMoveset(Piece piece){
+		void setBlackPawnMoveset(Piece piece){
 			// Move 1
 			Move move_one;
 			move_one.setMove(1,0,0,0,0,0);
-			piece.moveset[0] = move_one;
+			piece.moveset.push_back(move_one);
 			// Move 2
 			Move move_two;
 			move_two.setMove(2,0,0,0,0,0);
-			piece.moveset[1] = move_two;
+			piece.moveset.push_back(move_two);
+			// Move 3
+			Move attack_one;
+			attack_one.setMove(0,0,0,0,1,0);
+			piece.moveset.push_back(attack_one);
+			// Move 4
+			Move attack_two;
+			attack_two.setMove(0,0,0,0,0,1);
+			piece.moveset.push_back(attack_two);
+		}
+
+		void setWhitePawnMoveset(Piece piece){
+			// Move 1
+			Move move_one;
+			move_one.setMove(1,0,0,0,0,0);
+			piece.moveset.push_back(move_one);
+			// Move 2
+			Move move_two;
+			move_two.setMove(2,0,0,0,0,0);
+			piece.moveset.push_back(move_two);
 			// Move 3
 			Move attack_one;
 			attack_one.setMove(0,0,1,0,0,0);
-			piece.moveset[2] = attack_one;
+			piece.moveset.push_back(attack_one);
 			// Move 4
 			Move attack_two;
 			attack_two.setMove(0,0,0,1,0,0);
-			piece.moveset[3] = attack_two;
+			piece.moveset.push_back(attack_two);
 
 		}
 
@@ -164,21 +183,6 @@ class Board {
                     return 0;
         	}
 		}
-
-		/*
-		Piece getPieceFromSpace(std::string space){
-			for(int i = 0; i < 8; i++){
-				for(int j = 0; j < 8; j++){
-					if(space == board[i][j].id){
-						return board[i][j].getPiece();
-					}
-				}
-			}
-			std::cout << "No piece found!" << std::endl;
-			Piece empty = {};	
-			return empty;
-		}
-		*/
 
 		int getRow(std::string space){
 			for(int i = 0; i < 8; i++){

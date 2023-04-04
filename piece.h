@@ -1,6 +1,7 @@
 #ifndef PIECE_H
 #define PIECE_H
 
+#include <vector>
 #include "move.h"
 
 class Piece {
@@ -8,7 +9,7 @@ class Piece {
 		int value;
 		std::string color;
 		bool active;
-		Move moveset[10] = {};
+		std::vector<Move> moveset;
 
 		char getPieceSymbol(){
 			switch (value) {
