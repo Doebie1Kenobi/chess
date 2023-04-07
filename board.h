@@ -63,6 +63,7 @@ class Board {
 
 			for(int i = 0; i < 8; i++){
 				if((i == 0) || (i==7)){
+					setRookMoveset(arr[1]);
                     board[num][i].piece = arr[1];
                     board[num][i].hasPiece = true;
                 }else if((i==1) || (i==6)){
@@ -102,40 +103,134 @@ class Board {
 		void setBlackPawnMoveset(Piece piece){
 			// Move 1
 			Move move_one;
-			move_one.setMove(1,0,0,0,0,0);
+			move_one.setMove(-1,0);
 			piece.moveset.push_back(move_one);
 			// Move 2
 			Move move_two;
-			move_two.setMove(2,0,0,0,0,0);
+			move_two.setMove(-2,0);
 			piece.moveset.push_back(move_two);
 			// Move 3
 			Move attack_one;
-			attack_one.setMove(0,0,0,0,1,0);
+			attack_one.setMove(-1,1);
 			piece.moveset.push_back(attack_one);
 			// Move 4
 			Move attack_two;
-			attack_two.setMove(0,0,0,0,0,1);
+			attack_two.setMove(-1,-1);
 			piece.moveset.push_back(attack_two);
 		}
 
 		void setWhitePawnMoveset(Piece piece){
 			// Move 1
 			Move move_one;
-			move_one.setMove(1,0,0,0,0,0);
+			move_one.setMove(1,0/*,0,0,0,0*/);
 			piece.moveset.push_back(move_one);
 			// Move 2
 			Move move_two;
-			move_two.setMove(2,0,0,0,0,0);
+			move_two.setMove(2,0);
 			piece.moveset.push_back(move_two);
 			// Move 3
 			Move attack_one;
-			attack_one.setMove(0,0,1,0,0,0);
+			attack_one.setMove(1,1);
 			piece.moveset.push_back(attack_one);
 			// Move 4
 			Move attack_two;
-			attack_two.setMove(0,0,0,1,0,0);
+			attack_two.setMove(1,-1);
 			piece.moveset.push_back(attack_two);
 
+		}
+
+		void setRookMoveset(Piece piece){
+			Move move;
+
+			// VERTICAL
+			// Move 1
+			move.setMove(1,0);
+			piece.moveset.push_back(move);
+			// Move 2
+			move.setMove(2,0);
+			piece.moveset.push_back(move);
+			// Move 3
+			move.setMove(3,0);
+			piece.moveset.push_back(move);
+			// Move 4
+			move.setMove(4,0);
+			piece.moveset.push_back(move);
+			// Move 5
+			move.setMove(5,0);
+			piece.moveset.push_back(move);
+			// Move 6
+			move.setMove(6,0);
+			piece.moveset.push_back(move);
+			// Move 7
+			move.setMove(7,0);
+			piece.moveset.push_back(move);
+
+			// Move 1
+			move.setMove(-1,0);
+			piece.moveset.push_back(move);
+			// Move 2
+			move.setMove(-2,0);
+			piece.moveset.push_back(move);
+			// Move 3
+			move.setMove(-3,0);
+			piece.moveset.push_back(move);
+			// Move 4
+			move.setMove(-4,0);
+			piece.moveset.push_back(move);
+			// Move 5
+			move.setMove(-5,0);
+			piece.moveset.push_back(move);
+			// Move 6
+			move.setMove(-6,0);
+			piece.moveset.push_back(move);
+			// Move 7
+			move.setMove(-7,0);
+			piece.moveset.push_back(move);
+
+			// HORIZONTAL
+			// Move 1
+			move.setMove(0,1);
+			piece.moveset.push_back(move);
+			// Move 2
+			move.setMove(0,2);
+			piece.moveset.push_back(move);
+			// Move 3
+			move.setMove(0,3);
+			piece.moveset.push_back(move);
+			// Move 4
+			move.setMove(0,4);
+			piece.moveset.push_back(move);
+			// Move 5
+			move.setMove(0,5);
+			piece.moveset.push_back(move);
+			// Move 6
+			move.setMove(0,6);
+			piece.moveset.push_back(move);
+			// Move 7
+			move.setMove(0,7);
+			piece.moveset.push_back(move);
+
+			// Move 1
+			move.setMove(0,-1);
+			piece.moveset.push_back(move);
+			// Move 2
+			move.setMove(0,-2);
+			piece.moveset.push_back(move);
+			// Move 3
+			move.setMove(0,-3);
+			piece.moveset.push_back(move);
+			// Move 4
+			move.setMove(0,-4);
+			piece.moveset.push_back(move);
+			// Move 5
+			move.setMove(0,-5);
+			piece.moveset.push_back(move);
+			// Move 6
+			move.setMove(0,-6);
+			piece.moveset.push_back(move);
+			// Move 7
+			move.setMove(0,-7);
+			piece.moveset.push_back(move);
 		}
 
 		std::string getLetter(int pos){
@@ -218,13 +313,35 @@ class Board {
 			return false;
 		}
 
+		bool isZero(int num_one, int num_two){
+			int sum = num_one + num_two;
+			int diff = num_one - num_two;
+			if((sum == 0) || (diff == 0)){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
 		void move(std::string space_one, std::string space_two){
 			if(isValid(space_one) && isValid(space_two)){
-				int currRow = getRow(space_one);
-				int currCol = getColumn(space_one);
-				int nextRow = getRow(space_two);
-				int nextCol = getColumn(space_two);
+				int curr_row = getRow(space_one);
+				int curr_col = getColumn(space_one);
+				int target_row = getRow(space_two);
+				int target_col = getColumn(space_two);
 
+				int row_diff = curr_row - target_row;
+				int col_diff = curr_col - target_col;
+
+				Piece piece;
+				piece = board[curr_row][curr_col].piece;
+
+				if(isZero(row_diff, col_diff) || isZero(col_diff, row_diff)){
+					// Diagonal
+				}else{
+					// All other pieces
+				}
+				/*
 				Space nextSpace;
 				nextSpace.piece = board[currRow][currCol].piece;
 				nextSpace.id = board[nextRow][nextCol].id;
@@ -236,6 +353,7 @@ class Board {
 				currSpace.id = board[currRow][currCol].id;
 				currSpace.hasPiece = false;
 				board[currRow][currCol] = currSpace;
+				*/
 			}else{
 				std::cout << "Enter valid spaces!" << std::endl;
 			}

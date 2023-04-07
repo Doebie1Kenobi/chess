@@ -19,7 +19,7 @@ int main() {
 		whitePieces[i] = newPiece;
 	}
 	b.addPawns(whitePieces[0]);
-	b.addPiecesToBoard(whitePieces);
+	b.addPiecesToBoard(whitePieces);	
 
 	// Create each black piece
 	Piece blackPieces[6] = {};

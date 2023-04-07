@@ -14,43 +14,22 @@ class Piece {
 		char getPieceSymbol(){
 			switch (value) {
                 		case 1:
-                        		return 'P';
+                        	return 'P';
                 		case 2:
-                        		return 'R';
+                        	return 'R';
                 		case 3:
-                        		return 'N';
+                        	return 'N';
                 		case 4:
-                        		return 'B';
+                        	return 'B';
                 		case 5:
-                        		return 'Q';
+                        	return 'Q';
                 		case 6:
-                        		return 'K';
+                        	return 'K';
                 		default:
-                        		return ' ';
+                        	return ' ';
 			}
 
 		}
 };
-
-/*
-char Piece::getPieceSymbol(int value) {
-	switch (value) {
-		case 1:
-                        return 'P';
-                case 2:
-                        return 'R';
-                case 3:
-                        return 'N';
-                case 4:
-                        return 'B';
-                case 5:
-                        return 'Q';
-                case 6:
-                        return 'K';
-                default:
-                        return ' ';
-	}
-}
-*/
 
 #endif
