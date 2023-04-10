@@ -16,6 +16,7 @@ int main() {
 		newPiece.value = i + 1;
 		newPiece.color = "White";
 		newPiece.active = true;
+		newPiece.setMoveset();
 		whitePieces[i] = newPiece;
 	}
 	b.addPawns(whitePieces[0]);

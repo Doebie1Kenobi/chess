@@ -67,14 +67,17 @@ class Board {
                     board[num][i].piece = arr[1];
                     board[num][i].hasPiece = true;
                 }else if((i==1) || (i==6)){
+					setKnightMoveset(arr[2]);
                     board[num][i].piece = arr[2];
                     board[num][i].hasPiece = true;
                 }else if((i==2) || (i==5)){
+					setBishopMoveset(arr[3]);
                     board[num][i].piece = arr[3];
                     board[num][i].hasPiece = true;
                 }else if(i == 3){
+					setQueenMoveset(arr[4]);
                     board[num][i].piece = arr[4];
-                        		board[num][i].hasPiece = true;
+                    board[num][i].hasPiece = true;
                 }else{
                     board[num][i].piece = arr[5];
                     board[num][i].hasPiece = true;
@@ -88,13 +91,13 @@ class Board {
 			if(pawn.color == "White"){
 				num = 6;
 				for(int i = 0; i < 8; i++){
-					setWhitePawnMoveset(pawn);
+					//setWhitePawnMoveset(pawn);
 					board[num][i].piece = pawn;
 					board[num][i].hasPiece = true;
 				}
 			}
 			for(int i = 0; i < 8; i++){
-				setBlackPawnMoveset(pawn);
+				//setBlackPawnMoveset(pawn);
 				board[num][i].piece = pawn;
 				board[num][i].hasPiece = true;
 			}
@@ -233,6 +236,310 @@ class Board {
 			piece.moveset.push_back(move);
 		}
 
+		void setKnightMoveset(Piece piece){
+			Move move;
+
+			// Move 1
+			move.setMove(1,2);
+			piece.moveset.push_back(move);
+			// Move 2
+			move.setMove(2,1);
+			piece.moveset.push_back(move);
+			// Move 3
+			move.setMove(-1,2);
+			piece.moveset.push_back(move);
+			// Move 4
+			move.setMove(-2,1);
+			piece.moveset.push_back(move);
+			// Move 5
+			move.setMove(1,-2);
+			piece.moveset.push_back(move);
+			// Move 6
+			move.setMove(2,-1);
+			piece.moveset.push_back(move);
+			// Move 7
+			move.setMove(-1,-2);
+			piece.moveset.push_back(move);
+			// Move 8
+			move.setMove(-2,-1);
+			piece.moveset.push_back(move);
+		}
+
+		void setBishopMoveset(Piece piece){
+			Move move;
+
+			// Move 1
+			move.setMove(1,1);
+			piece.moveset.push_back(move);
+			// Move 2
+			move.setMove(2,2);
+			piece.moveset.push_back(move);
+			// Move 3
+			move.setMove(3,3);
+			piece.moveset.push_back(move);
+			// Move 4
+			move.setMove(4,4);
+			piece.moveset.push_back(move);
+			// Move 5
+			move.setMove(5,5);
+			piece.moveset.push_back(move);
+			// Move 6
+			move.setMove(6,6);
+			piece.moveset.push_back(move);
+			// Move 7
+			move.setMove(7,7);
+			piece.moveset.push_back(move);
+
+			// Move 1
+			move.setMove(1,-1);
+			piece.moveset.push_back(move);
+			// Move 2
+			move.setMove(2,-2);
+			piece.moveset.push_back(move);
+			// Move 3
+			move.setMove(3,-3);
+			piece.moveset.push_back(move);
+			// Move 4
+			move.setMove(4,-4);
+			piece.moveset.push_back(move);
+			// Move 5
+			move.setMove(5,-5);
+			piece.moveset.push_back(move);
+			// Move 6
+			move.setMove(6,-6);
+			piece.moveset.push_back(move);
+			// Move 7
+			move.setMove(7,-7);
+			piece.moveset.push_back(move);
+
+			// Move 1
+			move.setMove(-1,1);
+			piece.moveset.push_back(move);
+			// Move 2
+			move.setMove(-2,2);
+			piece.moveset.push_back(move);
+			// Move 3
+			move.setMove(-3,3);
+			piece.moveset.push_back(move);
+			// Move 4
+			move.setMove(-4,4);
+			piece.moveset.push_back(move);
+			// Move 5
+			move.setMove(-5,5);
+			piece.moveset.push_back(move);
+			// Move 6
+			move.setMove(-6,6);
+			piece.moveset.push_back(move);
+			// Move 7
+			move.setMove(-7,7);
+			piece.moveset.push_back(move);
+
+			// Move 1
+			move.setMove(-1,-1);
+			piece.moveset.push_back(move);
+			// Move 2
+			move.setMove(-2,-2);
+			piece.moveset.push_back(move);
+			// Move 3
+			move.setMove(-3,-3);
+			piece.moveset.push_back(move);
+			// Move 4
+			move.setMove(-4,-4);
+			piece.moveset.push_back(move);
+			// Move 5
+			move.setMove(-5,-5);
+			piece.moveset.push_back(move);
+			// Move 6
+			move.setMove(-6,-6);
+			piece.moveset.push_back(move);
+			// Move 7
+			move.setMove(-7,-7);
+			piece.moveset.push_back(move);
+		}
+
+		void setQueenMoveset(Piece piece){
+			Move move;
+
+			// HORIZONTAL
+			// Move 1
+			move.setMove(0,1);
+			piece.moveset.push_back(move);
+			// Move 2
+			move.setMove(0,2);
+			piece.moveset.push_back(move);
+			// Move 3
+			move.setMove(0,3);
+			piece.moveset.push_back(move);
+			// Move 4
+			move.setMove(0,4);
+			piece.moveset.push_back(move);
+			// Move 5
+			move.setMove(0,5);
+			piece.moveset.push_back(move);
+			// Move 6
+			move.setMove(0,6);
+			piece.moveset.push_back(move);
+			// Move 7
+			move.setMove(0,7);
+			piece.moveset.push_back(move);
+
+			// Move 1
+			move.setMove(0,-1);
+			piece.moveset.push_back(move);
+			// Move 2
+			move.setMove(0,-2);
+			piece.moveset.push_back(move);
+			// Move 3
+			move.setMove(0,-3);
+			piece.moveset.push_back(move);
+			// Move 4
+			move.setMove(0,-4);
+			piece.moveset.push_back(move);
+			// Move 5
+			move.setMove(0,-5);
+			piece.moveset.push_back(move);
+			// Move 6
+			move.setMove(0,-6);
+			piece.moveset.push_back(move);
+			// Move 7
+			move.setMove(0,-7);
+			piece.moveset.push_back(move);
+
+			// VERTICAL
+			// Move 1
+			move.setMove(1,0);
+			piece.moveset.push_back(move);
+			// Move 2
+			move.setMove(2,0);
+			piece.moveset.push_back(move);
+			// Move 3
+			move.setMove(3,0);
+			piece.moveset.push_back(move);
+			// Move 4
+			move.setMove(4,0);
+			piece.moveset.push_back(move);
+			// Move 5
+			move.setMove(5,0);
+			piece.moveset.push_back(move);
+			// Move 6
+			move.setMove(6,0);
+			piece.moveset.push_back(move);
+			// Move 7
+			move.setMove(7,0);
+			piece.moveset.push_back(move);
+
+			// Move 1
+			move.setMove(-1,0);
+			piece.moveset.push_back(move);
+			// Move 2
+			move.setMove(-2,0);
+			piece.moveset.push_back(move);
+			// Move 3
+			move.setMove(-3,0);
+			piece.moveset.push_back(move);
+			// Move 4
+			move.setMove(-4,0);
+			piece.moveset.push_back(move);
+			// Move 5
+			move.setMove(-5,0);
+			piece.moveset.push_back(move);
+			// Move 6
+			move.setMove(-6,0);
+			piece.moveset.push_back(move);
+			// Move 7
+			move.setMove(-7,0);
+			piece.moveset.push_back(move);
+
+			// DIAGONAL
+			// Move 1
+			move.setMove(1,1);
+			piece.moveset.push_back(move);
+			// Move 2
+			move.setMove(2,2);
+			piece.moveset.push_back(move);
+			// Move 3
+			move.setMove(3,3);
+			piece.moveset.push_back(move);
+			// Move 4
+			move.setMove(4,4);
+			piece.moveset.push_back(move);
+			// Move 5
+			move.setMove(5,5);
+			piece.moveset.push_back(move);
+			// Move 6
+			move.setMove(6,6);
+			piece.moveset.push_back(move);
+			// Move 7
+			move.setMove(7,7);
+			piece.moveset.push_back(move);
+
+			// Move 1
+			move.setMove(1,-1);
+			piece.moveset.push_back(move);
+			// Move 2
+			move.setMove(2,-2);
+			piece.moveset.push_back(move);
+			// Move 3
+			move.setMove(3,-3);
+			piece.moveset.push_back(move);
+			// Move 4
+			move.setMove(4,-4);
+			piece.moveset.push_back(move);
+			// Move 5
+			move.setMove(5,-5);
+			piece.moveset.push_back(move);
+			// Move 6
+			move.setMove(6,-6);
+			piece.moveset.push_back(move);
+			// Move 7
+			move.setMove(7,-7);
+			piece.moveset.push_back(move);
+
+			// Move 1
+			move.setMove(-1,1);
+			piece.moveset.push_back(move);
+			// Move 2
+			move.setMove(-2,2);
+			piece.moveset.push_back(move);
+			// Move 3
+			move.setMove(-3,3);
+			piece.moveset.push_back(move);
+			// Move 4
+			move.setMove(-4,4);
+			piece.moveset.push_back(move);
+			// Move 5
+			move.setMove(-5,5);
+			piece.moveset.push_back(move);
+			// Move 6
+			move.setMove(-6,6);
+			piece.moveset.push_back(move);
+			// Move 7
+			move.setMove(-7,7);
+			piece.moveset.push_back(move);
+
+			// Move 1
+			move.setMove(-1,-1);
+			piece.moveset.push_back(move);
+			// Move 2
+			move.setMove(-2,-2);
+			piece.moveset.push_back(move);
+			// Move 3
+			move.setMove(-3,-3);
+			piece.moveset.push_back(move);
+			// Move 4
+			move.setMove(-4,-4);
+			piece.moveset.push_back(move);
+			// Move 5
+			move.setMove(-5,-5);
+			piece.moveset.push_back(move);
+			// Move 6
+			move.setMove(-6,-6);
+			piece.moveset.push_back(move);
+			// Move 7
+			move.setMove(-7,-7);
+			piece.moveset.push_back(move);
+		}
+
 		std::string getLetter(int pos){
 			switch (pos){
                 case 0:
@@ -333,27 +640,30 @@ class Board {
 				int row_diff = curr_row - target_row;
 				int col_diff = curr_col - target_col;
 
+				Move move;
+				move.setMove(row_diff, col_diff);
+
 				Piece piece;
 				piece = board[curr_row][curr_col].piece;
 
-				if(isZero(row_diff, col_diff) || isZero(col_diff, row_diff)){
-					// Diagonal
-				}else{
-					// All other pieces
-				}
-				/*
-				Space nextSpace;
-				nextSpace.piece = board[currRow][currCol].piece;
-				nextSpace.id = board[nextRow][nextCol].id;
-				nextSpace.hasPiece = true;
-				board[nextRow][nextCol] = nextSpace;
+				std::cout << piece.moveset.size() << std::endl;
 
-				Space currSpace;
-				currSpace.piece = {};
-				currSpace.id = board[currRow][currCol].id;
-				currSpace.hasPiece = false;
-				board[currRow][currCol] = currSpace;
-				*/
+				for(std::size_t i = 0; i < piece.moveset.size(); i++){
+					if(move.isEqual(piece.moveset[i])){
+						std::cout << "MOVING PIECE..." << std::endl;
+						Space nextSpace;
+						nextSpace.piece = board[curr_row][curr_col].piece;
+						nextSpace.id = board[target_row][target_col].id;
+						nextSpace.hasPiece = true;
+						board[target_row][target_col] = nextSpace;
+
+						Space currSpace;
+						currSpace.piece = {};
+						currSpace.id = board[curr_row][curr_col].id;
+						currSpace.hasPiece = false;
+						board[curr_row][curr_col] = currSpace;
+					}
+				}
 			}else{
 				std::cout << "Enter valid spaces!" << std::endl;
 			}
